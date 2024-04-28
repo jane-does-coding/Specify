@@ -8,7 +8,7 @@ I often have so many tasks that I just write down on sticky notes and eventually
 
 ## Demo
 
-[Airbnb Live Demo](https://property-rent-eight.vercel.app/)
+[Specidy - Live Demo](https://specify-summit-hacks.vercel.app)
 
 ## Run Locally
 
