@@ -1,8 +1,7 @@
 {
-  "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js",
   "/page": "app/page.js",
+  "/api/register/route": "app/api/register/route.js",
+  "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js",
   "/(pages)/pomodoro/page": "app/(pages)/pomodoro/page.js",
-  "/(pages)/dashboard/[task_id]/page": "app/(pages)/dashboard/[task_id]/page.js",
-  "/api/tasks/route": "app/api/tasks/route.js",
-  "/api/tasks/[taskId]/route": "app/api/tasks/[taskId]/route.js"
+  "/not-found": "app/not-found.js"
 }

@@ -13,18 +13,23 @@ import { BentoGrid, BentoGridItem } from "../bento-grid";
 
 export function BentoGridDemo() {
 	return (
-		<BentoGrid className="max-w-[80vw] mx-auto md:mt-[-30rem] xl:mt-[-25rem]">
-			{items.map((item, i) => (
-				<BentoGridItem
-					key={i}
-					title={item.title}
-					description={item.description}
-					header={item.header}
-					icon={item.icon}
-					className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-				/>
-			))}
-		</BentoGrid>
+		<>
+			<h1 className="text-white text-[5rem] mb-[25rem] jura mx-auto text-center mt-[-20rem]">
+				About Specify
+			</h1>
+			<BentoGrid className="max-w-[80vw] mx-auto md:mt-[-30rem] xl:mt-[-20rem]">
+				{items.map((item, i) => (
+					<BentoGridItem
+						key={i}
+						title={item.title}
+						description={item.description}
+						header={item.header}
+						icon={item.icon}
+						className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+					/>
+				))}
+			</BentoGrid>
+		</>
 	);
 }
 const Skeleton = () => (
@@ -32,46 +37,34 @@ const Skeleton = () => (
 );
 const items = [
 	{
-		title: "The Dawn of Innovation",
-		description: "Explore the birth of groundbreaking ideas and inventions.",
-		header: <Skeleton />,
+		title: "Pomodoro Technique",
+		description: "Explore how the pomodoro timer can make you more productive",
+		header: <img src="/Pomodoro.png" className="h-[65%] rounded-md" />,
 		icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Digital Revolution",
-		description: "Dive into the transformative power of technology.",
-		header: <Skeleton />,
+		title: "Dashboard",
+		description:
+			"Learn to use the dashboard of this app and how it can help you.",
+		header: <img src="/banner.png" className="h-[65%] rounded-md" />,
 		icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Art of Design",
-		description: "Discover the beauty of thoughtful and functional design.",
-		header: <Skeleton />,
+		title: "Authentication",
+		description: "We value your privacy! Explore how.",
+		header: <img src="/Register Form.png" className="h-[65%] rounded-md" />,
 		icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Power of Communication",
-		description:
-			"Understand the impact of effective communication in our lives.",
-		header: <Skeleton />,
+		title: "How did it start",
+		description: "Learn about how did this start and why this website exists",
+		header: <img src="/long-banner.png" className="h-[65%] rounded-md" />,
 		icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Pursuit of Knowledge",
-		description: "Join the quest for understanding and enlightenment.",
-		header: <Skeleton />,
+		title: "What's up next?",
+		description: "Plans and updates are coming soon!",
+		header: <img src="/404 page.png" className="h-[65%] rounded-md" />,
 		icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
-	},
-	{
-		title: "The Joy of Creation",
-		description: "Experience the thrill of bringing ideas to life.",
-		header: <Skeleton />,
-		icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
-	},
-	{
-		title: "The Spirit of Adventure",
-		description: "Embark on exciting journeys and thrilling discoveries.",
-		header: <Skeleton />,
-		icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
 	},
 ];
