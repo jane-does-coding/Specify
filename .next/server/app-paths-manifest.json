@@ -3,6 +3,6 @@
   "/page": "app/page.js",
   "/(pages)/pomodoro/page": "app/(pages)/pomodoro/page.js",
   "/(pages)/dashboard/[task_id]/page": "app/(pages)/dashboard/[task_id]/page.js",
-  "/api/tasks/[taskId]/route": "app/api/tasks/[taskId]/route.js",
-  "/not-found": "app/not-found.js"
+  "/api/tasks/route": "app/api/tasks/route.js",
+  "/api/tasks/[taskId]/route": "app/api/tasks/[taskId]/route.js"
 }
