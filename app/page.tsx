@@ -24,7 +24,7 @@ export default function Home() {
 			<img
 				src="/long-banner.png"
 				alt=""
-				className="translate-y-[0rem] opacity-[0.6]"
+				className="translate-y-[0rem] opacity-[0.8]"
 			/>
 			<br />
 			<br />

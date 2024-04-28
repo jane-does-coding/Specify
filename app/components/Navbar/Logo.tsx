@@ -8,7 +8,7 @@ const Logo = () => {
 	const router = useRouter();
 	return (
 		<Link href={"/"} className="flex items-center justify-center">
-			<img src="/logo.jpg" width={60} height={60} alt="" />
+			<img src="/logo-nobackground.png" width={60} height={60} alt="" />
 			<h1 className="cursor-pointer text-white font-light text-3xl uppercase jura">
 				Specify
 			</h1>

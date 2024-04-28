@@ -1,0 +1,7 @@
+{
+  "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js",
+  "/page": "app/page.js",
+  "/(pages)/pomodoro/page": "app/(pages)/pomodoro/page.js",
+  "/not-found": "app/not-found.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+}
