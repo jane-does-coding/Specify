@@ -1,0 +1,4 @@
+.char {
+  transform: translateY(215px);
+  transition: transform 0.5s;
+}
