@@ -25,14 +25,11 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		<div className="min-h-screen pb-20 xl:pb-10 z-[5]">
 			<div className="w-[95vw] xl:w-[90vw] mx-auto p-4 xl:p-8 rounded-xl bg-black shadow-xl mt-28 z-[5]">
 				{tasks.map((task: any) => (
-					<>
-						<Item
-							task={task}
-							key={task.id}
-							isLast={tasks[tasks.length - 1].id == task.id}
-						/>
-						<p>{tasks[tasks.length - 1].id == task.id}</p>
-					</>
+					<Item
+						task={task}
+						key={task.id}
+						isLast={tasks[tasks.length - 1].id == task.id}
+					/>
 				))}
 			</div>
 		</div>

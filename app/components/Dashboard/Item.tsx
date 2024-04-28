@@ -3,7 +3,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 const Item = ({ task, isLast }: any) => {
-	console.log(isLast);
 	return (
 		<Link
 			href={`/dashboard/${task.id}`}
