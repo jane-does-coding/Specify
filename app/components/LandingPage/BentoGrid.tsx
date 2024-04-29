@@ -38,32 +38,33 @@ const Skeleton = () => (
 const items = [
 	{
 		title: "Pomodoro Technique",
-		description: "Explore how the pomodoro timer can make you more productive",
+		description:
+			"Besides being an awesome task manager, it also has a built in pomodoro timer!",
 		header: <img src="/Pomodoro.png" className="h-[65%] rounded-md" />,
-		icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+		/* 		icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+		 */
 	},
 	{
 		title: "Dashboard",
-		description:
-			"Learn to use the dashboard of this app and how it can help you.",
+		description: "Beautiful and easy to understand dashboard",
 		header: <img src="/banner.png" className="h-[65%] rounded-md" />,
 		icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "Authentication",
-		description: "We value your privacy! Explore how.",
+		description: "We value your privacy! All data is encrypted.",
 		header: <img src="/Register Form.png" className="h-[65%] rounded-md" />,
 		icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "How did it start",
-		description: "Learn about how did this start and why this website exists",
+		title: "Design",
+		description: "User friendly design, styles, and branding!",
 		header: <img src="/long-banner.png" className="h-[65%] rounded-md" />,
 		icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "What's up next?",
-		description: "Plans and updates are coming soon!",
+		description: "Updates are coming soon!",
 		header: <img src="/404 page.png" className="h-[65%] rounded-md" />,
 		icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
 	},

@@ -5,58 +5,70 @@
 html,
 body,
 :root {
-  height: 100%;
+	height: 100%;
 }
 
 ::-webkit-scrollbar {
-  width: 0.5rem;
+	width: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0);
+	background: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(37, 37, 49);
-  z-index: 2;
-  border-radius: 1rem;
+	background: rgb(37, 37, 49);
+	z-index: 2;
+	border-radius: 1rem;
 }
 
 img {
-  object-fit: cover;
+	object-fit: cover;
 }
 
 .my-column:nth-of-type(1) {
-  transform: translateY(-45%);
+	transform: translateY(-45%);
 }
 
 .my-column:nth-of-type(2) {
-  transform: translateY(-95%);
+	transform: translateY(-95%);
 }
 
 .my-column:nth-of-type(3) {
-  transform: translateY(-45%);
+	transform: translateY(-45%);
 }
 
 .my-column:nth-of-type(4) {
-  transform: translateY(-75%);
+	transform: translateY(-75%);
 }
 
 .char {
-  transform: translateY(215px);
-  transition: transform 0.5s;
+	transform: translateY(215px);
+	transition: transform 0.5s;
 }
 
 .gradient {
-  background: -webkit-linear-gradient(
-    45deg,
-    #eee,
-    rgb(136, 89, 183)
-  ) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+	background: -webkit-linear-gradient(
+		45deg,
+		#eee,
+		rgb(136, 89, 183)
+	) !important;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
 }
 
-.jura{
-  font-family: "Jura";
+.jura {
+	font-family: "Jura";
+}
+
+select {
+	background-color: #27272a !important;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: transparent;
+	border: none;
+	padding: 0.5rem;
+	font-size: 1rem;
+	cursor: pointer;
 }

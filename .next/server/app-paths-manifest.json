@@ -1,7 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/api/register/route": "app/api/register/route.js",
-  "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js",
   "/(pages)/pomodoro/page": "app/(pages)/pomodoro/page.js",
-  "/not-found": "app/not-found.js"
+  "/page": "app/page.js"
 }
