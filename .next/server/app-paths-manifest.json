@@ -1,4 +1,6 @@
 {
   "/(pages)/pomodoro/page": "app/(pages)/pomodoro/page.js",
+  "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js",
+  "/not-found": "app/not-found.js",
   "/page": "app/page.js"
 }

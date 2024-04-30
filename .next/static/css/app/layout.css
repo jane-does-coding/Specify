@@ -2003,7 +2003,7 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
-	background: rgb(37, 37, 49);
+	background: rgb(0, 0, 0);
 	z-index: 2;
 	border-radius: 1rem;
 }
