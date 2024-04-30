@@ -953,6 +953,12 @@ video {
 .mt-\[2px\] {
   margin-top: 2px;
 }
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mr-4 {
+  margin-right: 1rem;
+}
 .block {
   display: block;
 }
@@ -1503,6 +1509,10 @@ video {
 .bg-white\/\[0\.2\] {
   background-color: rgb(255 255 255 / 0.2);
 }
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
 .bg-\[radial-gradient\(var\(--sky-500\)_40\%\2c transparent_60\%\)\] {
   background-image: radial-gradient(var(--sky-500) 40%,transparent 60%);
 }
@@ -1932,6 +1942,9 @@ video {
 }
 .blur-sm {
   --tw-blur: blur(4px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .backdrop-blur-\[10px\] {
