@@ -30,6 +30,7 @@ const Input = ({
 				{...register(id, { required })}
 				placeholder=" "
 				type={type}
+				minLength={3}
 				className={`peer w-full p-3 pt-6 pl-4 font-light bg-neutral-800/75 border-2 border-neutral-800/75 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed relative
           ${errors[id] ? "border-rose-400" : "border-neutral-300"}
           ${errors[id] ? "focus:border-rose-500" : "focus:border-neutral-900"}

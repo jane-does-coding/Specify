@@ -1,19 +1,36 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import useTaskModal from "@/app/hooks/useTaskModal";
 import AnimatedBackground from "../AnimatedBackground";
-import Item from "./Item";
-import getTasks from "@/app/actions/getTasks";
+import GridItem from "./GridItem";
 import { MovingBorderDemo } from "./NewTask";
+import Item from "./Item";
+import { CiGrid41 } from "react-icons/ci";
+import { IoList } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 const Dashboard = ({ tasks }: { tasks: any }) => {
 	const taskModal = useTaskModal();
+	const [displayMode, setDisplayMode] = useState("list");
+
 	const [filterByPriority, setFilterByPriority] = useState<string>("");
 	const [filterByTag, setFilterByTag] = useState<string>("");
 	const [filterByStatus, setFilterByStatus] = useState<string>("");
 	const [filterByDeadline, setFilterByDeadline] = useState<string>("");
 	const [searchTerm, setSearchTerm] = useState<string>("");
 	const [sortedTasks, setSortedTasks] = useState<any[]>([]);
+
+	const saveDisplayModeToLocalStorage = (mode: string) => {
+		localStorage.setItem("displayMode", mode);
+	};
+
+	useEffect(() => {
+		// Load display mode from local storage on component mount
+		const savedMode = localStorage.getItem("displayMode");
+		if (savedMode) {
+			setDisplayMode(savedMode);
+		}
+	}, []);
 
 	useEffect(() => {
 		const sorted = [...tasks].sort((a, b) => {
@@ -72,6 +89,12 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		);
 	});
 
+	const toggleDisplayMode = () => {
+		const newMode = displayMode === "list" ? "grid" : "list";
+		setDisplayMode(newMode);
+		saveDisplayModeToLocalStorage(newMode);
+	};
+
 	if (tasks.length === 0)
 		return (
 			<>
@@ -86,12 +109,17 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		);
 
 	return (
-		<div className="min-h-screen pb-20 xl:pb-10 z-[5]">
+		<motion.div
+			initial={{ opacity: 0, y: 100 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.5 }}
+			className="min-h-screen pb-20 xl:pb-10 z-[5]"
+		>
 			<div className="w-[95vw] xl:w-[90vw] mx-auto p-4 xl:p-8 rounded-xl bg-black shadow-xl mt-28 z-[5]">
 				<div className="mb-4 flex justify-between items-center">
-					<div className="w-full">
+					<div className="w-full flex">
 						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-4"
+							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2 text-xs xl:text-[1rem]"
 							value={filterByPriority}
 							onChange={handlePriorityChange}
 						>
@@ -102,7 +130,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 							<option value="low">Low</option>
 						</select>
 						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-4"
+							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2  text-xs xl:text-[1rem]"
 							value={filterByTag}
 							onChange={handleTagChange}
 						>
@@ -116,7 +144,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 							<option value="Other">Other</option>
 						</select>
 						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-4"
+							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2  text-xs xl:text-[1rem]"
 							value={filterByStatus}
 							onChange={handleStatusChange}
 						>
@@ -127,7 +155,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 							<option value="Abandoned">Abandoned</option>
 						</select>
 						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-4"
+							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2  text-xs xl:text-[1rem]"
 							value={filterByDeadline}
 							onChange={handleDeadlineChange}
 						>
@@ -136,25 +164,54 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 							<option value="farthest">Farthest</option>
 						</select>
 					</div>
+
 					<div className="w-full">
 						<input
 							type="text"
 							placeholder="Search tasks..."
-							className="px-6 py-3 rounded-full bg-neutral-800 text-white w-full"
+							className="px-6 py-3 rounded-full bg-neutral-800 text-white w-full text-xs xl:text-[1rem]"
 							value={searchTerm}
 							onChange={handleSearchChange}
 						/>
 					</div>
+
+					<button
+						className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-2  text-xs xl:text-[1rem]"
+						onClick={toggleDisplayMode}
+					>
+						{displayMode === "list" ? (
+							<CiGrid41 size={28} />
+						) : (
+							<IoList size={28} />
+						)}
+					</button>
 				</div>
-				{filteredTasks.map((task: any) => (
-					<Item
-						task={task}
-						key={task.id}
-						isLast={filteredTasks[filteredTasks.length - 1].id === task.id}
-					/>
-				))}
+
+				{filteredTasks.length === 0 ? (
+					<h1 className="text-white text-center jura text-[3rem]">
+						Nothing was found.
+					</h1>
+				) : displayMode === "list" ? (
+					filteredTasks.map((task: any) => (
+						<Item
+							task={task}
+							key={task.id}
+							isLast={filteredTasks[filteredTasks.length - 1].id === task.id}
+						/>
+					))
+				) : (
+					<div className="grid grid-cols-3 gap-4">
+						{filteredTasks.map((task: any) => (
+							<GridItem
+								task={task}
+								key={task.id}
+								isLast={filteredTasks[filteredTasks.length - 1].id === task.id}
+							/>
+						))}
+					</div>
+				)}
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

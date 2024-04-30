@@ -11,6 +11,16 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
+    "/(pages)/dashboard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(pages)/dashboard/page.js"
+    ],
+    "/(pages)/dashboard/[task_id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(pages)/dashboard/[task_id]/page.js"
+    ],
     "/(pages)/pomodoro/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -21,16 +31,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
-    ],
-    "/(pages)/dashboard/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(pages)/dashboard/page.js"
-    ],
-    "/(pages)/dashboard/[task_id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(pages)/dashboard/[task_id]/page.js"
     ]
   }
 }

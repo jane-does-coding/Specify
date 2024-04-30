@@ -12,18 +12,18 @@ import { useRouter } from "next/navigation";
 import useTaskModal from "@/app/hooks/useTaskModal";
 import useUpdateTaskModal from "@/app/hooks/useUpdateTaskModal";
 
-const UpdateTaskModal = ({ taskId }: any) => {
+const UpdateTaskModal = ({ taskId, task }: any) => {
 	const taskModal = useUpdateTaskModal();
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
 
 	const [formData, setFormData] = useState({
-		title: "",
-		description: "",
-		priority: "",
-		tag: "",
-		deadline: "",
-		status: "",
+		title: task.title,
+		description: task.description,
+		priority: task.priority,
+		tag: task.tag,
+		deadline: task.deadline,
+		status: task.status,
 	});
 	/* 
 	const handleSubmit = async () => {

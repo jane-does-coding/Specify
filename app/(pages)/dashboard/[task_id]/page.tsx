@@ -18,7 +18,7 @@ const Page = async ({ params }: { params: { task_id: string } }) => {
 
 	return (
 		<>
-			<UpdateTaskModal taskId={task.id} />
+			<UpdateTaskModal taskId={task.id} task={task} />
 			<div className="w-[90vw] min-h-screen md:w-[60vw] mx-auto  py-4 flex flex-col gap-4 items-center justify-center mt-28 pb-28 xl:m-y-0">
 				<h1 className="text-[3.25rem] font-bold text-white jura">
 					{task.title}
