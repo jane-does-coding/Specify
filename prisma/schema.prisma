@@ -17,6 +17,7 @@ model User {
   updatedAt      DateTime @updatedAt
   favoriteIds    String[] @db.ObjectId
   tasks          Task[] // Relation to tasks
+  todos          Todo[] // Relation to tasks
 }
 
 model Task {
@@ -27,6 +28,13 @@ model Task {
   tag         String
   deadline    String
   status      String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Todo {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
   userId      String
   user        User     @relation(fields: [userId], references: [id])
 }

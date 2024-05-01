@@ -1,5 +1,6 @@
 {
+  "/(pages)/todo/page": "app/(pages)/todo/page.js",
+  "/api/todos/route": "app/api/todos/route.js",
   "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js",
-  "/(pages)/pomodoro/page": "app/(pages)/pomodoro/page.js",
   "/page": "app/page.js"
 }
