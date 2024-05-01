@@ -48,6 +48,10 @@ const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
 									label="Pomodoro"
 								/>
 								<MenuItem
+									onClick={() => router.push("/todo")}
+									label="Brain Dump"
+								/>
+								<MenuItem
 									onClick={() => {
 										signOut();
 									}}

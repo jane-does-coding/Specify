@@ -23,6 +23,8 @@ I often have so many tasks that I just write down on sticky notes and eventually
 - Search Tasks
 - Grid/List View
 - Pomodoro Timer
+- Add simple todos
+- Delete simple todos
 
 ## Run Locally
 
