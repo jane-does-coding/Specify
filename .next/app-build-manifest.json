@@ -16,17 +16,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(pages)/dashboard/page.js"
     ],
-    "/(pages)/dashboard/[task_id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(pages)/dashboard/[task_id]/page.js"
-    ],
-    "/(pages)/pomodoro/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/(pages)/pomodoro/page.css",
-      "static/chunks/app/(pages)/pomodoro/page.js"
-    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
