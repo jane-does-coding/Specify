@@ -13,6 +13,17 @@ I often have so many tasks that I just write down on sticky notes and eventually
 
 [Specidy - Live Demo](https://specify-summit-hacks.vercel.app)
 
+## Functionality
+
+- Authentication with password encryption
+- Create Tasks
+- Edit Tasks
+- Delete Tasks
+- Sort Tasks
+- Search Tasks
+- Grid/List View
+- Pomodoro Timer
+
 ## Run Locally
 
 Clone the project
