@@ -188,7 +188,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 				</div>
 
 				{filteredTasks.length === 0 ? (
-					<h1 className="text-white text-center jura text-[3rem]">
+					<h1 className="text-white text-center jura text-[3rem] my-10 mt-18">
 						Nothing was found.
 					</h1>
 				) : displayMode === "list" ? (

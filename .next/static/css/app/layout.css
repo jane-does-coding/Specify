@@ -908,6 +908,10 @@ video {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
 .-mt-12 {
   margin-top: -3rem;
 }

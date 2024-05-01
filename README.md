@@ -44,6 +44,13 @@ Install dependencies
   npm i
 ```
 
+Add .env
+
+```bash
+  DATABASE_URL=
+  NEXTAUTH_SECRET=
+```
+
 Start the server
 
 ```bash
