@@ -28,7 +28,6 @@ const TaskModal = () => {
 	const handleSubmit = async () => {
 		if (
 			!formData.title ||
-			!formData.description ||
 			!formData.priority ||
 			!formData.tag ||
 			!formData.deadline ||
@@ -52,6 +51,15 @@ const TaskModal = () => {
 			taskModal.onClose();
 		} catch (error) {
 			console.error("Error creating task:", error);
+		} finally {
+			setFormData({
+				title: "",
+				description: "",
+				priority: "",
+				tag: "",
+				deadline: "",
+				status: "",
+			});
 		}
 	};
 
@@ -107,7 +115,7 @@ const TaskModal = () => {
 				>
 					<option value="">Tag</option>
 					<option value="Work">Work</option>
-					<option value="School">Schools</option>
+					<option value="School">School</option>
 					<option value="Personal">Personal</option>
 					<option value="Social">Social</option>
 					<option value="Family">Family</option>

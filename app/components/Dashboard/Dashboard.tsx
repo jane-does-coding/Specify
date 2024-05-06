@@ -1,17 +1,20 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import useTaskModal from "@/app/hooks/useTaskModal";
 import AnimatedBackground from "../AnimatedBackground";
 import GridItem from "./GridItem";
-import { MovingBorderDemo } from "./NewTask";
 import Item from "./Item";
 import { CiGrid41 } from "react-icons/ci";
 import { IoList } from "react-icons/io5";
+import { RiEyeFill, RiEyeOffFill } from "react-icons/ri"; // Import eye icons
 import { motion } from "framer-motion";
 
 const Dashboard = ({ tasks }: { tasks: any }) => {
 	const taskModal = useTaskModal();
 	const [displayMode, setDisplayMode] = useState("list");
+	const [filterVisible, setFilterVisible] = useState(false);
+	const [hideDone, setHideDone] = useState(true);
 
 	const [filterByPriority, setFilterByPriority] = useState<string>("");
 	const [filterByTag, setFilterByTag] = useState<string>("");
@@ -70,7 +73,8 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 			filterByPriority === "" || task.priority === filterByPriority;
 		const tagFilter = filterByTag === "" || task.tag === filterByTag;
 		const statusFilter =
-			filterByStatus === "" || task.status === filterByStatus;
+			(filterByStatus === "" || task.status === filterByStatus) &&
+			(!hideDone || task.status !== "Done");
 		const deadlineFilter =
 			filterByDeadline === "" ||
 			(filterByDeadline === "closest" &&
@@ -95,19 +99,6 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		saveDisplayModeToLocalStorage(newMode);
 	};
 
-	if (tasks.length === 0)
-		return (
-			<>
-				<AnimatedBackground value={200} />
-				<div className="min-h-screen flex items-center justify-center flex-col">
-					<h1 className="text-white text-[5rem] jura translate-y-[-5rem]">
-						No tasks yet.
-					</h1>
-					<MovingBorderDemo />
-				</div>
-			</>
-		);
-
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 100 }}
@@ -117,54 +108,6 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		>
 			<div className="w-[95vw] xl:w-[90vw] mx-auto p-4 xl:p-8 rounded-xl bg-black shadow-xl mt-28 z-[5]">
 				<div className="mb-4 flex justify-between items-center">
-					<div className="w-full flex">
-						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2 text-xs xl:text-[1rem]"
-							value={filterByPriority}
-							onChange={handlePriorityChange}
-						>
-							<option value="">Filter by Priority</option>
-							<option value="extremely high">Extremely High</option>
-							<option value="high">High</option>
-							<option value="medium">Medium</option>
-							<option value="low">Low</option>
-						</select>
-						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2  text-xs xl:text-[1rem]"
-							value={filterByTag}
-							onChange={handleTagChange}
-						>
-							<option value="">Filter by Tag</option>
-							<option value="Work">Work</option>
-							<option value="School">School</option>
-							<option value="Personal">Personal</option>
-							<option value="Social">Social</option>
-							<option value="Family">Family</option>
-							<option value="Health">Health</option>
-							<option value="Other">Other</option>
-						</select>
-						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2  text-xs xl:text-[1rem]"
-							value={filterByStatus}
-							onChange={handleStatusChange}
-						>
-							<option value="">Filter by Status</option>
-							<option value="Not Done">Not Done</option>
-							<option value="In Progress">In Progress</option>
-							<option value="Done">Done</option>
-							<option value="Abandoned">Abandoned</option>
-						</select>
-						<select
-							className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2  text-xs xl:text-[1rem]"
-							value={filterByDeadline}
-							onChange={handleDeadlineChange}
-						>
-							<option value="">Filter by Deadline</option>
-							<option value="closest">Closest</option>
-							<option value="farthest">Farthest</option>
-						</select>
-					</div>
-
 					<div className="w-full">
 						<input
 							type="text"
@@ -176,7 +119,14 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 					</div>
 
 					<button
-						className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-2  text-xs xl:text-[1rem]"
+						className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-4 text-xs xl:text-[1rem]"
+						onClick={() => setHideDone(!hideDone)}
+					>
+						{hideDone ? <RiEyeOffFill size={28} /> : <RiEyeFill size={28} />}
+					</button>
+
+					<button
+						className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-4 text-xs xl:text-[1rem]"
 						onClick={toggleDisplayMode}
 					>
 						{displayMode === "list" ? (
@@ -185,6 +135,64 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 							<IoList size={28} />
 						)}
 					</button>
+				</div>
+
+				<div className="w-full flex">
+					<button
+						className="px-4 py-2 rounded-lg bg-neutral-800 text-white mr-2 text-xs xl:text-[1rem]"
+						onClick={() => setFilterVisible(!filterVisible)}
+					>
+						{filterVisible ? "Hide Filters" : "Show Filters"}
+					</button>
+					{filterVisible && (
+						<div className="flex flex-wrap">
+							<select
+								className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2 text-xs xl:text-[1rem]"
+								value={filterByPriority}
+								onChange={handlePriorityChange}
+							>
+								<option value="">Filter by Priority</option>
+								<option value="extremely high">Extremely High</option>
+								<option value="high">High</option>
+								<option value="medium">Medium</option>
+								<option value="low">Low</option>
+							</select>
+							<select
+								className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2 text-xs xl:text-[1rem]"
+								value={filterByTag}
+								onChange={handleTagChange}
+							>
+								<option value="">Filter by Tag</option>
+								<option value="Work">Work</option>
+								<option value="School">School</option>
+								<option value="Personal">Personal</option>
+								<option value="Social">Social</option>
+								<option value="Family">Family</option>
+								<option value="Health">Health</option>
+								<option value="Other">Other</option>
+							</select>
+							<select
+								className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2 text-xs xl:text-[1rem]"
+								value={filterByStatus}
+								onChange={handleStatusChange}
+							>
+								<option value="">Filter by Status</option>
+								<option value="Not Done">Not Done</option>
+								<option value="In Progress">In Progress</option>
+								<option value="Done">Done</option>
+								<option value="Abandoned">Abandoned</option>
+							</select>
+							<select
+								className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2 text-xs xl:text-[1rem]"
+								value={filterByDeadline}
+								onChange={handleDeadlineChange}
+							>
+								<option value="">Filter by Deadline</option>
+								<option value="closest">Closest</option>
+								<option value="farthest">Farthest</option>
+							</select>
+						</div>
+					)}
 				</div>
 
 				{filteredTasks.length === 0 ? (

@@ -47,6 +47,9 @@ export default async function RootLayout({
 				<TaskModal />
 				<Navbar currentUser={currentUser} />
 				{children}
+				<br />
+				<br />
+				<br />
 				<Footbar />
 			</body>
 		</html>

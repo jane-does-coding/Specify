@@ -919,6 +919,9 @@ video {
 .mb-0 {
   margin-bottom: 0px;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -976,8 +979,8 @@ video {
 .mt-auto {
   margin-top: auto;
 }
-.mb-10 {
-  margin-bottom: 2.5rem;
+.ml-4 {
+  margin-left: 1rem;
 }
 .block {
   display: block;
@@ -1394,9 +1397,6 @@ video {
 }
 .border-y-\[1px\] {
   border-top-width: 1px;
-  border-bottom-width: 1px;
-}
-.border-b {
   border-bottom-width: 1px;
 }
 .border-b-\[1\.5px\] {
