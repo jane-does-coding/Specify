@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import useTaskModal from "@/app/hooks/useTaskModal";
 import AnimatedBackground from "../AnimatedBackground";
@@ -61,7 +60,28 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 	const handleDeadlineChange = (
 		event: React.ChangeEvent<HTMLSelectElement>
 	) => {
-		setFilterByDeadline(event.target.value);
+		const selectedOption = event.target.value;
+		setFilterByDeadline(selectedOption);
+
+		// Sorting based on farthest or closest deadlines
+		const sorted = [...tasks].sort((a, b) => {
+			const dateA = new Date(a.deadline);
+			const dateB = new Date(b.deadline);
+
+			// If 'closest' is selected, sort by ascending order
+			if (selectedOption === "closest") {
+				return dateA.getTime() - dateB.getTime();
+			}
+			// If 'farthest' is selected, sort by descending order
+			else if (selectedOption === "farthest") {
+				return dateB.getTime() - dateA.getTime();
+			}
+			// For other cases, maintain the default sorting
+			else {
+				return 0;
+			}
+		});
+		setSortedTasks(sorted);
 	};
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,22 +95,11 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		const statusFilter =
 			(filterByStatus === "" || task.status === filterByStatus) &&
 			(!hideDone || task.status !== "Done");
-		const deadlineFilter =
-			filterByDeadline === "" ||
-			(filterByDeadline === "closest" &&
-				new Date(task.deadline) >= new Date()) ||
-			(filterByDeadline === "farthest" && new Date(task.deadline) < new Date());
 		const searchFilter =
 			searchTerm === "" ||
 			task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
 			task.description.toLowerCase().includes(searchTerm.toLowerCase());
-		return (
-			priorityFilter &&
-			tagFilter &&
-			statusFilter &&
-			deadlineFilter &&
-			searchFilter
-		);
+		return priorityFilter && tagFilter && statusFilter && searchFilter;
 	});
 
 	const toggleDisplayMode = () => {
@@ -194,6 +203,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 						</div>
 					)}
 				</div>
+				<br />
 
 				{filteredTasks.length === 0 ? (
 					<h1 className="text-white text-center jura text-[3rem] my-10 mt-18">

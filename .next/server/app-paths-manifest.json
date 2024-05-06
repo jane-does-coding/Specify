@@ -1,6 +1,6 @@
 {
   "/page": "app/page.js",
   "/(pages)/pomodoro/page": "app/(pages)/pomodoro/page.js",
-  "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js",
-  "/(pages)/dashboard/[task_id]/page": "app/(pages)/dashboard/[task_id]/page.js"
+  "/(pages)/dashboard/[task_id]/page": "app/(pages)/dashboard/[task_id]/page.js",
+  "/(pages)/dashboard/page": "app/(pages)/dashboard/page.js"
 }
