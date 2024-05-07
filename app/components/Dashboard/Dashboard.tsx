@@ -8,19 +8,22 @@ import { CiGrid41 } from "react-icons/ci";
 import { IoList } from "react-icons/io5";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri"; // Import eye icons
 import { motion } from "framer-motion";
+import DeleteDoneBtn from "./DeleteDoneBtn";
 
 const Dashboard = ({ tasks }: { tasks: any }) => {
 	const taskModal = useTaskModal();
 	const [displayMode, setDisplayMode] = useState("list");
 	const [filterVisible, setFilterVisible] = useState(false);
 	const [hideDone, setHideDone] = useState(true);
-
 	const [filterByPriority, setFilterByPriority] = useState<string>("");
 	const [filterByTag, setFilterByTag] = useState<string>("");
 	const [filterByStatus, setFilterByStatus] = useState<string>("");
 	const [filterByDeadline, setFilterByDeadline] = useState<string>("");
 	const [searchTerm, setSearchTerm] = useState<string>("");
 	const [sortedTasks, setSortedTasks] = useState<any[]>([]);
+
+	// Assuming you have an array of tasks named 'tasks'
+	const doneTasks = tasks.filter((task: any) => task.status === "Done");
 
 	const saveDisplayModeToLocalStorage = (mode: string) => {
 		localStorage.setItem("displayMode", mode);
@@ -126,6 +129,8 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 							onChange={handleSearchChange}
 						/>
 					</div>
+
+					<DeleteDoneBtn tasks={tasks} />
 
 					<button
 						className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-4 text-xs xl:text-[1rem]"

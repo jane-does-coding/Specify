@@ -31,6 +31,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(pages)/dashboard/[task_id]/page.js"
+    ],
+    "/(pages)/todo/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(pages)/todo/page.js"
     ]
   }
 }
