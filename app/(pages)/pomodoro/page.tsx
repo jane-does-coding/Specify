@@ -4,8 +4,8 @@ import Timer from "@/app/components/Timer";
 import React, { useContext, useEffect, useRef, useState } from "react";
 
 const Page = () => {
-	const [workMinutes, setWorkMinutes] = useState(5);
-	const [breakMinutes, setBreakMinutes] = useState(2);
+	const [workMinutes, setWorkMinutes] = useState(20);
+	const [breakMinutes, setBreakMinutes] = useState(10);
 
 	return (
 		<>
