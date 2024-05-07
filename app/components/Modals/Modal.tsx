@@ -75,10 +75,10 @@ const Modal = ({
 							{/* HEADER */}
 							<div className="flex items-center p-6 rounded-t justify-center relative border-b-[1.5px] border-neutral-800/50">
 								<button
-									className="p-2 text-white rounded-full hover:bg-slate-800/50 border-0 transition absolute left-9"
+									className="p-2 text-white rounded-full hover:bg-neutral-800/50 border-0 transition absolute left-9"
 									onClick={handleClose}
 								>
-									<IoMdClose size={20} />
+									<IoMdClose size={24} />
 								</button>
 								<div className="text-xl text-neutral-100">{title}</div>
 							</div>

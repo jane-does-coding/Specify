@@ -4,10 +4,18 @@ import Timer from "@/app/components/Timer";
 import React, { useContext, useEffect, useRef, useState } from "react";
 
 const Page = () => {
+	const [workMinutes, setWorkMinutes] = useState(5);
+	const [breakMinutes, setBreakMinutes] = useState(2);
+
 	return (
 		<>
 			<AnimatedBackground value={250} />
-			<Timer />
+			<Timer
+				breakMinutes={breakMinutes}
+				setBreakMinutes={setBreakMinutes}
+				workMinutes={workMinutes}
+				setWorkMinutes={setWorkMinutes}
+			/>
 		</>
 	);
 };
