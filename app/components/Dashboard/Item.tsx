@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const Item = ({ task, isLast }: any) => {
+const Item = ({ task, isLast, closeDeadline }: any) => {
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 100 }}
@@ -17,7 +17,11 @@ const Item = ({ task, isLast }: any) => {
 					task.status.toLowerCase() == "done"
 						? "opacity-[0.25] bg-neutral-500/[40%]"
 						: "opacity-1"
-				} ${isLast ? "border-transparent" : "border-neutral-700"} `}
+				} ${isLast ? "border-transparent" : "border-neutral-700"} ${
+					closeDeadline && task.status.toLowerCase() !== "done"
+						? "border-red-400/50 bg-red-300/[10%]"
+						: ""
+				} `}
 			>
 				<h2 className="text-[1rem] xl:text-[1.25rem] font-bold text-white jura">
 					{task.title}
@@ -28,16 +32,40 @@ const Item = ({ task, isLast }: any) => {
 						: task.description}
 				</p>
 				<div className="flex items-center justify-center gap-4 mt-2">
-					<span className="text-xs xl:text-sm bg-neutral-800 text-white px-2 xl:px-4 py-1 xl:py-2 rounded-full">
+					<span
+						className={`text-sm  px-2 xl:px-4 py-1 xl:py-2 rounded-full 
+						${
+							closeDeadline && task.status.toLowerCase() !== "done"
+								? "bg-neutral-700 text-white"
+								: "bg-neutral-800 text-white"
+						}`}
+					>
 						{task.tag}
 					</span>
-					<span className="text-xs xl:text-sm bg-purple-300 text-neutral-900 px-2 xl:px-4 py-1 xl:py-2 rounded-full">
+					<span
+						className={`text-sm   px-2 xl:px-4 py-1 xl:py-2 rounded-full 
+							${
+								closeDeadline && task.status.toLowerCase() !== "done"
+									? "bg-neutral-700 text-white"
+									: "bg-purple-300 text-neutral-900"
+							}
+
+					`}
+					>
 						{task.priority}
 					</span>
-					<span className="text-xs xl:text-sm bg-red-400 text-neutral-900 px-2 xl:px-4 py-1 xl:py-2 rounded-full">
+					<span className="text-sm bg-red-400 text-neutral-900 px-2 xl:px-4 py-1 xl:py-2 rounded-full">
 						{task.deadline}
 					</span>
-					<span className="text-xs xl:text-sm bg-blue-300 text-neutral-900 px-2 xl:px-4 py-1 xl:py-2 rounded-full">
+					<span
+						className={`text-sm  px-2 xl:px-4 py-1 xl:py-2 rounded-full 
+						${
+							closeDeadline && task.status.toLowerCase() !== "done"
+								? "bg-neutral-700 text-white"
+								: "bg-blue-300 text-neutral-900"
+						}
+						`}
+					>
 						{task.status}
 					</span>
 				</div>

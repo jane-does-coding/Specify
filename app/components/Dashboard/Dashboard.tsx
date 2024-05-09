@@ -4,11 +4,13 @@ import useTaskModal from "@/app/hooks/useTaskModal";
 import AnimatedBackground from "../AnimatedBackground";
 import GridItem from "./GridItem";
 import Item from "./Item";
-import { CiGrid41 } from "react-icons/ci";
-import { IoList } from "react-icons/io5";
-import { RiEyeFill, RiEyeOffFill } from "react-icons/ri"; // Import eye icons
 import { motion } from "framer-motion";
 import DeleteDoneBtn from "./DeleteDoneBtn";
+
+/* Icons */
+import { CiGrid41 } from "react-icons/ci";
+import { IoList } from "react-icons/io5";
+import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 
 const Dashboard = ({ tasks }: { tasks: any }) => {
 	const taskModal = useTaskModal();
@@ -111,6 +113,18 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		saveDisplayModeToLocalStorage(newMode);
 	};
 
+	const calculateCloseDeadline = (deadline: string) => {
+		const taskDeadline = new Date(deadline);
+		const today = new Date();
+		const threeDaysLater = new Date();
+		threeDaysLater.setDate(today.getDate() + 2);
+
+		return (
+			taskDeadline <= today ||
+			(taskDeadline >= today && taskDeadline <= threeDaysLater)
+		);
+	};
+
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 100 }}
@@ -152,6 +166,9 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 				</div>
 
 				<div className="w-full flex">
+					<span className="bg-neutral-800 text-white p-2 px-4 rounded-full mr-2">
+						Done Tasks: {doneTasks.length}/{tasks.length}
+					</span>
 					<button
 						className="px-4 py-2 rounded-lg bg-neutral-800 text-white mr-2 text-xs xl:text-[1rem]"
 						onClick={() => setFilterVisible(!filterVisible)}
@@ -220,6 +237,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 							task={task}
 							key={task.id}
 							isLast={filteredTasks[filteredTasks.length - 1].id === task.id}
+							closeDeadline={calculateCloseDeadline(task.deadline)}
 						/>
 					))
 				) : (
@@ -229,6 +247,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 								task={task}
 								key={task.id}
 								isLast={filteredTasks[filteredTasks.length - 1].id === task.id}
+								closeDeadline={calculateCloseDeadline(task.deadline)}
 							/>
 						))}
 					</div>
