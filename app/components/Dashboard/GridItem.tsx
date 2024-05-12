@@ -13,7 +13,7 @@ const GridItem = ({ task, isLast, closeDeadline }: any) => {
 		>
 			<Link
 				href={`/dashboard/${task.id}`}
-				className={`border rounded-lg overflow-hidden shadow-lg px-4 xl:px-4 py-4 flex flex-col gap-2 items-start border-neutral-700 ${
+				className={`border rounded-lg overflow-hidden shadow-lg px-2 md:px-4 xl:px-4 py-2 md:py-4 flex flex-col gap-2 items-start border-neutral-700 ${
 					task.status.toLowerCase() === "done" ? "opacity-50" : "opacity-100"
 				} ${
 					closeDeadline && task.status.toLowerCase() !== "done"

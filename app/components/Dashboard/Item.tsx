@@ -13,7 +13,7 @@ const Item = ({ task, isLast, closeDeadline }: any) => {
 		>
 			<Link
 				href={`/dashboard/${task.id}`}
-				className={`border-b-[1px] px-4 xl:px-8  py-4 flex gap-4 items-center justify-between ${
+				className={`border-b-[1px] px-2 md:px-4 xl:px-8 py-2 md:py-4 flex gap-4 items-center justify-between ${
 					task.status.toLowerCase() == "done"
 						? "opacity-[0.25] bg-neutral-500/[40%]"
 						: "opacity-1"
@@ -43,7 +43,7 @@ const Item = ({ task, isLast, closeDeadline }: any) => {
 						{task.tag}
 					</span>
 					<span
-						className={`text-sm   px-2 xl:px-4 py-1 xl:py-2 rounded-full 
+						className={`text-sm   px-2 xl:px-4 py-1 xl:py-2 rounded-full hidden md:flex
 							${
 								closeDeadline && task.status.toLowerCase() !== "done"
 									? "bg-neutral-700 text-white"
@@ -54,11 +54,11 @@ const Item = ({ task, isLast, closeDeadline }: any) => {
 					>
 						{task.priority}
 					</span>
-					<span className="text-sm bg-red-400 text-neutral-900 px-2 xl:px-4 py-1 xl:py-2 rounded-full">
+					<span className="text-sm bg-red-400 text-neutral-900 px-2 xl:px-4 py-1 xl:py-2 rounded-full hidden md:flex">
 						{task.deadline}
 					</span>
 					<span
-						className={`text-sm  px-2 xl:px-4 py-1 xl:py-2 rounded-full 
+						className={`text-sm  px-2 xl:px-4 py-1 xl:py-2 rounded-full hidden md:flex
 						${
 							closeDeadline && task.status.toLowerCase() !== "done"
 								? "bg-neutral-700 text-white"

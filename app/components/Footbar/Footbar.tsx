@@ -8,7 +8,7 @@ const Footbar = () => {
 				<img src="/logo-nobackground.png" width={50} height={50} alt="" />
 				<p>ⓒ Specify 2024</p>
 			</div>
-			<div className=" pr-20 flex items-center justify-center gap-8">
+			<div className=" pr-20 items-center justify-center gap-8 hidden md:flex">
 				<Link href={"/dashboard"}>Dashboard</Link>
 				<Link href={"/pomodoro"}>Pomodoro</Link>
 			</div>

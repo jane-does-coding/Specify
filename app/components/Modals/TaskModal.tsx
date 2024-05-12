@@ -89,6 +89,7 @@ const TaskModal = () => {
 					className="text-white w-full p-3 pl-4 font-light bg-neutral-800/75 border-2 border-neutral-800/75 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed relative"
 				>
 					<option value="">Priority</option>
+					<option value="emergency">Emergency</option>
 					<option value="extremely high">Extremely High</option>
 					<option value="high">High</option>
 					<option value="medium">Medium</option>

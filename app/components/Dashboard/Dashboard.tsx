@@ -117,7 +117,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 		const taskDeadline = new Date(deadline);
 		const today = new Date();
 		const threeDaysLater = new Date();
-		threeDaysLater.setDate(today.getDate() + 2);
+		threeDaysLater.setDate(today.getDate() + 0);
 
 		return (
 			taskDeadline <= today ||
@@ -133,7 +133,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 			className="min-h-screen pb-20 xl:pb-10 z-[5]"
 		>
 			<div className="w-[95vw] xl:w-[90vw] mx-auto p-4 xl:p-8 rounded-xl bg-black shadow-xl mt-28 z-[5]">
-				<div className="mb-4 flex justify-between items-center">
+				<div className="mb-4 flex flex-col lg:flex-row justify-between items-center">
 					<div className="w-full">
 						<input
 							type="text"
@@ -144,45 +144,51 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 						/>
 					</div>
 
-					<DeleteDoneBtn tasks={tasks} />
+					<div className="my-4 md:my-0 min-w-fit">
+						<DeleteDoneBtn tasks={tasks} />
+					</div>
 
-					<button
-						className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-4 text-xs xl:text-[1rem]"
-						onClick={() => setHideDone(!hideDone)}
-					>
-						{hideDone ? <RiEyeOffFill size={28} /> : <RiEyeFill size={28} />}
-					</button>
-
-					<button
-						className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-4 text-xs xl:text-[1rem]"
-						onClick={toggleDisplayMode}
-					>
-						{displayMode === "list" ? (
-							<CiGrid41 size={28} />
-						) : (
-							<IoList size={28} />
-						)}
-					</button>
+					<div className="flex gap-2 md:gap-0">
+						<button
+							className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-4 text-xs xl:text-[1rem]"
+							onClick={() => setHideDone(!hideDone)}
+						>
+							{hideDone ? <RiEyeOffFill size={28} /> : <RiEyeFill size={28} />}
+						</button>
+						<button
+							className="p-2 xl:p-3 rounded-full bg-neutral-700 text-white ml-4 text-xs xl:text-[1rem]"
+							onClick={toggleDisplayMode}
+						>
+							{displayMode === "list" ? (
+								<CiGrid41 size={28} />
+							) : (
+								<IoList size={28} />
+							)}
+						</button>
+					</div>
 				</div>
 
-				<div className="w-full flex">
-					<span className="bg-neutral-800 text-white p-2 px-4 rounded-full mr-2">
-						Done Tasks: {doneTasks.length}/{tasks.length}
-					</span>
-					<button
-						className="px-4 py-2 rounded-lg bg-neutral-800 text-white mr-2 text-xs xl:text-[1rem]"
-						onClick={() => setFilterVisible(!filterVisible)}
-					>
-						{filterVisible ? "Hide Filters" : "Show Filters"}
-					</button>
+				<div className="w-full flex flex-col lg:flex-row">
+					<div className="flex">
+						<span className="bg-neutral-800 text-white p-2 px-4 rounded-full mr-2 hidden md:flex">
+							Done Tasks: {doneTasks.length}/{tasks.length}
+						</span>
+						<button
+							className="px-4 py-2 rounded-lg bg-neutral-800 text-white mr-2 text-xs xl:text-[1rem]"
+							onClick={() => setFilterVisible(!filterVisible)}
+						>
+							{filterVisible ? "Hide Filters" : "Show Filters"}
+						</button>
+					</div>
 					{filterVisible && (
-						<div className="flex flex-wrap">
+						<div className="flex flex-wrap gap-2 my-4 md:gap-0 md:my-0">
 							<select
 								className="px-4 py-2 rounded-lg bg-gray-800 text-white mr-2 text-xs xl:text-[1rem]"
 								value={filterByPriority}
 								onChange={handlePriorityChange}
 							>
 								<option value="">Filter by Priority</option>
+								<option value="emergency">Emergency</option>
 								<option value="extremely high">Extremely High</option>
 								<option value="high">High</option>
 								<option value="medium">Medium</option>
@@ -241,7 +247,7 @@ const Dashboard = ({ tasks }: { tasks: any }) => {
 						/>
 					))
 				) : (
-					<div className="grid grid-cols-3 gap-4">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 						{filteredTasks.map((task: any) => (
 							<GridItem
 								task={task}
