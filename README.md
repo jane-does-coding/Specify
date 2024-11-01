@@ -11,7 +11,7 @@ I often have so many tasks that I just write down on sticky notes and eventually
 
 ## Demo
 
-[Specidy - Live Demo](https://specify-summit-hacks.vercel.app)
+[Specify - Live Demo](https://specify-summit-hacks.vercel.app)
 
 ## Functionality
 
